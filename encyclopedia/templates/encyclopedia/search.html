@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search '{{query}}'
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+    <div class="col-6">
+    <h3>Matching Pages ({{ count }})</h3>
+    </div>
+    <div class="col-6">
+    <h3>Query : '{{query}}'</h3>
+    </div>
+    </div>
+    <hr>
+    <ul>
+        {% for entry in entries %}
+        <li><a href="{% url 'entry' entry %}">{{ entry }}</a></li>
+        {% empty %}
+        No matching entry found...
+        {% endfor %}
+    </ul>
+
+{% endblock %}
